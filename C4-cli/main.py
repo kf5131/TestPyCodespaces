@@ -1,3 +1,5 @@
+import sys
+
 
 # params
 BOARD_HEIGHT: int = 6
@@ -11,17 +13,19 @@ STATUS_INIT: dict = {'win': False, 'next': PLAYER1}
 
 def empty_board(height: int = BOARD_HEIGHT, width:int = BOARD_WIDTH) -> list:
     ''' Simple function to generate board as list of list of empty string charcters '''
-    board = [['' for _ in range(width)] for _ in range(height)]
+    board = [[' ' for _ in range(width)] for _ in range(height)]
     return board
 
 def print_board(board: list, status: dict = STATUS_INIT):
-    ''' Simple function '''
+    ''' Simple function to print board to CLI '''
     print(status)
     print(f"1 2 3 4 5 6 7")
     
     for row in board:
-        print(row.join())
-            
+        out = ''
+        for chr in row:
+            out.join(chr)
+        print(out)    
     
     ...
 
@@ -44,6 +48,8 @@ def main():
     print('Working')
     
     board_1 = empty_board()
+    
+    
     
     print_board(board_1)
     
