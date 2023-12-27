@@ -51,6 +51,15 @@ def drop_piece(board: list, player:str = 'D', col: int = 1):
     return board
 
 def is_winner(board, player):
+    '''Check if a player has won the game.
+    TODO: remove hardcoded board size
+    Args:
+        board (list): The game board represented as a list of lists.
+        player (str): The player's symbol ('X' or 'O').
+
+    Returns:
+        bool: True if the player has won, False otherwise.
+    '''
     # Check for four in a row horizontally
     for row in board:
         if player * 4 in "".join(row):
