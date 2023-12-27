@@ -50,6 +50,36 @@ def drop_piece(board: list, player:str = 'D', col: int = 1):
     
     return board
 
+def is_winner(board, player):
+    # Check for four in a row horizontally
+    for row in board:
+        if player * 4 in "".join(row):
+            return True
+
+    # Check for four in a row vertically
+    for col in range(7):
+        if player * 4 in "".join(board[row][col] for row in range(6)):
+            return True
+
+    # Check for four in a row diagonally (top-left to bottom-right)
+    for row in range(3):
+        for col in range(4):
+            if player * 4 in "".join(board[row + i][col + i] for i in range(4)):
+                return True
+
+    # Check for four in a row diagonally (top-right to bottom-left)
+    for row in range(3):
+        for col in range(3, 7):
+            if player * 4 in "".join(board[row + i][col - i] for i in range(4)):
+                return True
+
+    return False
+
+
+
+
+
+
 def gameloop(board):
     
     win = False
@@ -64,20 +94,10 @@ def gameloop(board):
 
 
 
+
+
 def main():
-    print('Working')
     
-    board_1 = empty_board()
-    
-    board_1[-1][-1:] = PLAYER1
-    
-    print_board(board_1)
-    
-    board_2 = drop_piece(board_1, col=7)
-    
-    print_board(board_2)
-    
-    print('End work')
     ...
 
 
