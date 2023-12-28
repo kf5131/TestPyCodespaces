@@ -84,10 +84,8 @@ def is_winner(board, player):
 
     return False
 
-
-
-
-
+def is_board_full(board):
+    return all(cell != " " for row in board for cell in row)
 
 def gameloop(board):
     
