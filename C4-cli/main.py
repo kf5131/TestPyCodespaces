@@ -20,7 +20,7 @@ def empty_board(height: int = BOARD_HEIGHT, width:int = BOARD_WIDTH) -> list:
 
 def print_board(board: list, status: dict = STATUS_INIT):
     ''' Simple function to print board to CLI '''
-    print(f"Win is: {status['win']} & Next player is: {status['next']}")
+    print(f"Next player is: {status['next']}")
     print(f"1   2   3   4   5   6   7")
     
     for row in board:
@@ -87,11 +87,35 @@ def is_winner(board, player):
 def is_board_full(board):
     return all(cell != " " for row in board for cell in row)
 
-def gameloop(board):
+def gameloop():
     
-    win = False
+    board = empty_board()
+    
+    current_player = STATUS_INIT['next']
+    win = STATUS_INIT['win']
     
     while win == False:
+        print_board(board)    
+        
+        col = int(input(f"Player {current_player} choose column (1-7): "))
+        if col < 1 or col > 6 or board[0][col] != " ":
+            print("Invalid move. Try again")
+        
+        drop_piece(board, current_player, col)
+        
+        
+        if is_winner(board, current_player):
+            print_board(board)
+            print(f"Player {current_player} wins!")
+            break
+
+        if is_board_full(board):
+            print_board(board)
+            print("It's a tie!")
+            break
+
+        current_player = "O" if current_player == "X" else "X"
+        
         ...
     
     ...
@@ -104,7 +128,7 @@ def gameloop(board):
 
 
 def main():
-    
+    gameloop()
     ...
 
 
