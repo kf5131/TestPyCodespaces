@@ -7,4 +7,4 @@ Board size is 7x6. The game is played by two players, each of which has a color 
 
 ## Installation
 
-none required. Built using vanilla python 3.10.13.
+No package installation required. Built using vanilla python 3.10.13.
